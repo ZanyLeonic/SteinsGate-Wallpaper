@@ -14,10 +14,16 @@
             <div class="bg-comp03"></div>
             <div class="bg-comp04"></div>
             <div class="bg-comp05"></div>
+            <div class="bg-comp06-container">
+                <img class="bg-comp06" src="img/bg_comp06.png" />
+            </div>
         </div>
         <video id="bg-video" class="video" muted loop>
             <source src="bg.webm" type="video/webm">
         </video><!-- /video -->
+        <audio id="bg-audio" hidden loop>
+            <source src="bg.ogg" type="audio/ogg">
+        </audio>
         
         <script type="text/javascript">
             var bgcomp01 = document.getElementsByClassName("bg-comp01")[0];
@@ -25,6 +31,7 @@
             var bgcomp03 = document.getElementsByClassName("bg-comp03")[0];
             var bgcomp04 = document.getElementsByClassName("bg-comp04")[0];
             var bgcomp05 = document.getElementsByClassName("bg-comp05")[0];
+            var bgcomp06 = document.getElementsByClassName("bg-comp06")[0];
 
             var bgcomp = [bgcomp02, bgcomp03, bgcomp04];
             var lastElement = null;
@@ -53,6 +60,22 @@
                 lastElement = randElement;
             }
 
+            function comp06Anim()
+            {
+                switch (getRandomInt(0,3))
+                {
+                    case 0:
+                        bgcomp06.style.clip = "rect(0, 205px, 1080px, 0)";
+                        break;
+                    case 1:
+                        bgcomp06.style.clip = "rect(0, 250px, 1080px, 0)";
+                        break;
+                    case 2:
+                        bgcomp06.style.clip = "";
+                        break;
+                }
+            }
+
             setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp01);
             setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp02);
             setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp03);
@@ -60,6 +83,7 @@
             setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp05);
 
             setInterval(randomVisibility, 2500);
+            setInterval(comp06Anim, 1000);
         </script>
 
         <script type="text/javascript">
@@ -69,12 +93,21 @@
                 * @type {HTMLElement}
                 */
                 var video = document.getElementById("bg-video");
+
+                /**
+                * Audio element
+                * @type {HTMLElement}
+                */
+                var audio = document.getElementById("bg-audio");
             
                 /**
                 * Check if video can play, and play it
                 */
                 video.addEventListener( "canplay", function() {
                     video.play();
+                });
+                audio.addEventListener("canplay", function() {
+                    audio.play();
                 });
             })();
         </script>          

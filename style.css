@@ -20,7 +20,8 @@ video {
     --bg-comp02-timing: 0.1s;
     --bg-comp03-timing: 0.05s;
     --bg-comp04-timing: 0.1s;    
-    --bg-comp05-timing: 0.025s;    
+    --bg-comp05-timing: 0.025s;
+    --bg-comp06-timing: 0.05s;      
 }
 
 /* =============================================================================
@@ -139,4 +140,19 @@ div.bg-comp05
     -moz-animation: flickerAnimation var(--bg-comp05-timing) infinite;
     -o-animation: flickerAnimation var(--bg-comp05-timing) infinite;
      animation: flickerAnimation var(--bg-comp05-timing) infinite;
+}
+
+div.bg-comp06-container
+{
+    position: relative;
+    z-index: -6;
+    -webkit-animation: flickerAnimation var(--bg-comp06-timing) infinite;
+    -moz-animation: flickerAnimation var(--bg-comp06-timing) infinite;
+    -o-animation: flickerAnimation var(--bg-comp06-timing) infinite;
+     animation: flickerAnimation var(--bg-comp06-timing) infinite;
+}
+
+img.bg-comp06
+{
+    position: absolute;
 }
