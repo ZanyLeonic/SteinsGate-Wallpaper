@@ -3,32 +3,80 @@
     <head>
         <meta charset="UTF-8" />
         <title>Steins;Gate</title>
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script type="text/javascript" src="main.js"></script>
     </head>
     <body> 
         <div class="bg-components">
             <div class="bg-base"></div>
             <div class="bg-comp01"></div>
+            <div class="bg-comp02"></div>
+            <div class="bg-comp03"></div>
+            <div class="bg-comp04"></div>
+            <div class="bg-comp05"></div>
         </div>
-          <video id="bg-video" class="video" muted loop>
+        <video id="bg-video" class="video" muted loop>
             <source src="bg.webm" type="video/webm">
-          </video><!-- /video -->
-          
-          <script>
-          (function() {
-            /**
-             * Video element
-             * @type {HTMLElement}
-             */
-            var video = document.getElementById("bg-video");
-          
-            /**
-             * Check if video can play, and play it
-             */
-            video.addEventListener( "canplay", function() {
-              video.play();
-            });
-          })();
-          </script>          
+        </video><!-- /video -->
+        
+        <script type="text/javascript">
+            var bgcomp01 = document.getElementsByClassName("bg-comp01")[0];
+            var bgcomp02 = document.getElementsByClassName("bg-comp02")[0];
+            var bgcomp03 = document.getElementsByClassName("bg-comp03")[0];
+            var bgcomp04 = document.getElementsByClassName("bg-comp04")[0];
+            var bgcomp05 = document.getElementsByClassName("bg-comp05")[0];
+
+            var bgcomp = [bgcomp02, bgcomp03, bgcomp04];
+            var lastElement = null;
+
+            function setNewTiming(element, time)
+            {
+                element.style.setProperty("--" + element.className + "-timing", time + "s");
+            }
+
+            function changeAnimationTime(element)
+            {
+                var randomTiming = getRandomFloat(0.0001, 0.05);
+                setNewTiming(element, randomTiming);
+            }
+
+            function randomVisibility()
+            {
+                if (lastElement != null)
+                {
+                    lastElement.style.display = "";
+                }
+                
+                var randElement = bgcomp[getRandomInt(0, bgcomp.length)];
+
+                randElement.style.display = "none";
+                lastElement = randElement;
+            }
+
+            setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp01);
+            setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp02);
+            setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp03);
+            setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp04);
+            setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp05);
+
+            setInterval(randomVisibility, 2500);
+        </script>
+
+        <script type="text/javascript">
+            (function() {
+                /**
+                * Video element
+                * @type {HTMLElement}
+                */
+                var video = document.getElementById("bg-video");
+            
+                /**
+                * Check if video can play, and play it
+                */
+                video.addEventListener( "canplay", function() {
+                    video.play();
+                });
+            })();
+        </script>          
     </body>
 </html>

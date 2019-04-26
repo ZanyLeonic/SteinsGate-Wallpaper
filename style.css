@@ -15,6 +15,14 @@ video {
   padding: 0;
 }
 
+:root {
+    --bg-comp01-timing: 0.025s;
+    --bg-comp02-timing: 0.1s;
+    --bg-comp03-timing: 0.05s;
+    --bg-comp04-timing: 0.1s;    
+    --bg-comp05-timing: 0.025s;    
+}
+
 /* =============================================================================
   HTML, BODY
 ============================================================================= */
@@ -29,6 +37,23 @@ body {
   line-height: 1.5;
 }
 
+@keyframes flickerAnimation {
+    0%   { opacity:1; }
+    100% { opacity:0; }
+}
+@-o-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    100% { opacity:0; }
+}
+@-moz-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    100% { opacity:0; }
+}
+@-webkit-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    100% { opacity:0; }
+}
+
 /* =============================================================================
   VIDEO
 ============================================================================= */
@@ -36,7 +61,7 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
-    z-index: 1;
+    z-index: -9;
     min-width: 100%;
     min-height: 100%;
     width: auto;
@@ -60,8 +85,58 @@ div.bg-components div
             transform: translate(-50%, -50%);
 }
 
-div.base-bg 
+div.bg-base
 {
     background-image: url('img/bg.png');
     z-index: -10;
+}
+
+div.bg-comp01 
+{
+    background-image: url('img/bg_comp01.png');
+    z-index: -1;
+    -webkit-animation: flickerAnimation var(--bg-comp01-timing) infinite;
+    -moz-animation: flickerAnimation var(--bg-comp01-timing) infinite;
+    -o-animation: flickerAnimation var(--bg-comp01-timing) infinite;
+     animation: flickerAnimation var(--bg-comp01-timing) infinite;
+}
+
+div.bg-comp02 
+{
+    background-image: url('img/bg_comp02.png');
+    z-index: -2;
+    -webkit-animation: flickerAnimation var(--bg-comp02-timing) infinite;
+    -moz-animation: flickerAnimation var(--bg-comp02-timing) infinite;
+    -o-animation: flickerAnimation var(--bg-comp02-timing) infinite;
+     animation: flickerAnimation var(--bg-comp02-timing) infinite;
+}
+
+div.bg-comp03 
+{
+    background-image: url('img/bg_comp03.png');
+    z-index: -3;
+    -webkit-animation: flickerAnimation var(--bg-comp03-timing) infinite;
+    -moz-animation: flickerAnimation var(--bg-comp03-timing) infinite;
+    -o-animation: flickerAnimation var(--bg-comp03-timing) infinite;
+     animation: flickerAnimation var(--bg-comp03-timing) infinite;
+}
+
+div.bg-comp04 
+{
+    background-image: url('img/bg_comp04.png');
+    z-index: -4;
+    -webkit-animation: flickerAnimation var(--bg-comp04-timing) infinite;
+    -moz-animation: flickerAnimation var(--bg-comp04-timing) infinite;
+    -o-animation: flickerAnimation var(--bg-comp04-timing) infinite;
+     animation: flickerAnimation var(--bg-comp04-timing) infinite;
+}
+
+div.bg-comp05 
+{
+    background-image: url('img/bg_comp05.png');
+    z-index: -5;
+    -webkit-animation: flickerAnimation var(--bg-comp05-timing) infinite;
+    -moz-animation: flickerAnimation var(--bg-comp05-timing) infinite;
+    -o-animation: flickerAnimation var(--bg-comp05-timing) infinite;
+     animation: flickerAnimation var(--bg-comp05-timing) infinite;
 }
