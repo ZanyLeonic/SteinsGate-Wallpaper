@@ -1,0 +1,67 @@
+/*!
+Styles for full screen background video demo
+*/
+/* =============================================================================
+  RESETS
+============================================================================= */
+html,
+body,
+div,
+h1,
+p,
+a,
+video {
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================================================
+  HTML, BODY
+============================================================================= */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-size: 16px;
+  font-family: "Oxygen", sans-serif;
+  line-height: 1.5;
+}
+
+/* =============================================================================
+  VIDEO
+============================================================================= */
+.video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+
+div.bg-components div 
+{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+
+div.base-bg 
+{
+    background-image: url('img/bg.png');
+    z-index: -10;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Steins;Gate</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body> 
+        <div class="bg-components">
+            <div class="bg-base"></div>
+            <div class="bg-comp01"></div>
+        </div>
+          <video id="bg-video" class="video" muted loop>
+            <source src="bg.webm" type="video/webm">
+          </video><!-- /video -->
+          
+          <script>
+          (function() {
+            /**
+             * Video element
+             * @type {HTMLElement}
+             */
+            var video = document.getElementById("bg-video");
+          
+            /**
+             * Check if video can play, and play it
+             */
+            video.addEventListener( "canplay", function() {
+              video.play();
+            });
+          })();
+          </script>          
+    </body>
+</html>
