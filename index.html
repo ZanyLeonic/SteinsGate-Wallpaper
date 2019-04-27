@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <title>Steins;Gate</title>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-        <script type="text/javascript" src="main.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <script type="text/javascript" src="js/main.min.js"></script>
     </head>
     <body> 
         <div class="bg-components">
@@ -18,7 +18,7 @@
                 <img class="bg-comp06" src="img/bg_comp06.png" />
             </div>
         </div>
-        <video id="bg-video" class="time-machine" muted loop>
+        <video id="bg-video" class="time-machine" muted loop autoplay>
             <source src="media/bg.webm" type="video/webm">
         </video>
         <audio id="bg-audio" hidden loop>
@@ -40,11 +40,11 @@
             setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp02);
             setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp03);
             setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp04);
-            setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp05);
+            setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp05); 
 
             setInterval(randomVisibility, 2000);
             setInterval(comp06Anim, 1500);
-
+            
             (function() {
                 /**
                 * Video element

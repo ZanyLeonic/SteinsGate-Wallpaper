@@ -7,13 +7,15 @@
 			"enableBGM": {
 				"text": "Play BGM",
 				"type": "bool",
-				"value": true
+				"value": true,
+				"order": 0
 			},
 			"showCopyrightInfo":
 			{
 				"text": "Show Copyright info",
 				"type": "bool",
-				"value": true
+				"value": true,
+				"order": 3
 			},
 			"BGMVolume":
 			{
@@ -22,14 +24,20 @@
 				"max": 100,
 				"min": 0,
 				"value": 100,
-				"editable": true
+				"editable": true,
+				"order": 1
 			},
 			"enableVideo": {
 				"text": "Play Video",
 				"type": "bool",
-				"value": true
+				"value": true,
+				"order": 2
 			}
 		}
 	},
+	"monetization" : false,
+	"preview" : "preview.png",
+	"tags" : [ "Anime" ],
+	"type" : "web",
 	"title" : "Steins;Gate Main Menu"
 }
