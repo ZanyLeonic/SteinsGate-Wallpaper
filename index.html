@@ -8,7 +8,7 @@
     </head>
     <body> 
         <div class="bg-components">
-            <div class="bg-base"></div>
+            <div id="bg-base" class="bg-base"></div>
             <div class="bg-comp01"></div>
             <div class="bg-comp02"></div>
             <div class="bg-comp03"></div>
@@ -20,7 +20,7 @@
         </div>
         <video id="bg-video" class="video" muted loop>
             <source src="bg.webm" type="video/webm">
-        </video><!-- /video -->
+        </video>
         <audio id="bg-audio" hidden loop>
             <source src="bg.ogg" type="audio/ogg">
         </audio>
@@ -35,6 +35,8 @@
 
             var bgcomp = [bgcomp02, bgcomp03, bgcomp04];
             var lastElement = null;
+            
+            var wallpaperProperties = null;
 
             function setNewTiming(element, time)
             {
@@ -65,13 +67,13 @@
                 switch (getRandomInt(0,3))
                 {
                     case 0:
-                        bgcomp06.style.clip = "rect(0, 205px, 1080px, 0)";
+                        bgcomp06.style.clipPath = "polygon(0 0, 10.5% 0, 10.5% 100%, 0 100%)";
                         break;
                     case 1:
-                        bgcomp06.style.clip = "rect(0, 250px, 1080px, 0)";
+                        bgcomp06.style.clipPath = "polygon(0 0, 13% 0, 13% 100%, 0 100%)";
                         break;
                     case 2:
-                        bgcomp06.style.clip = "";
+                        bgcomp06.style.clipPath = "";
                         break;
                 }
             }
@@ -84,9 +86,7 @@
 
             setInterval(randomVisibility, 2500);
             setInterval(comp06Anim, 1000);
-        </script>
 
-        <script type="text/javascript">
             (function() {
                 /**
                 * Video element
@@ -99,17 +99,77 @@
                 * @type {HTMLElement}
                 */
                 var audio = document.getElementById("bg-audio");
-            
+                
                 /**
                 * Check if video can play, and play it
                 */
-                video.addEventListener( "canplay", function() {
+                video.addEventListener("canplay", function() {
                     video.play();
                 });
                 audio.addEventListener("canplay", function() {
                     audio.play();
                 });
             })();
+
+            window.wallpaperPropertyListener = {
+                applyUserProperties: function(properties) {
+                    /**
+                    * Video element
+                    * @type {HTMLElement}
+                    */
+                    var video = document.getElementById("bg-video");
+                    if (properties.enableVideo && video)
+                    {
+                        if(properties.enableVideo.value == true)
+                        {
+                            video.play();
+                        }
+                        else
+                        {
+                            video.pause();
+                        }
+                    }
+
+                    /**
+                    * Audio element
+                    * @type {HTMLElement}
+                    */
+                    var audio = document.getElementById("bg-audio");
+                    if (properties.enableBGM && audio)
+                    {
+                        if(properties.enableBGM.value == true)
+                        {
+                            audio.play();
+                        }
+                        else
+                        {
+                            audio.pause();
+                        }
+                    }
+
+                    if (properties.BGMVolume && audio)
+                    {
+                        if (properties.BGMVolume.value != "")
+                        {
+                            if (properties.BGMVolume.value == 0)
+                            {
+                                audio.volume = properties.BGMVolume.value = 0;
+                            }
+                            else
+                            {
+                                audio.volume = properties.BGMVolume.value / 100;
+                            }
+                        }
+                    }
+
+                    var base = document.getElementById("bg-base");
+
+                    if (properties.showCopyrightInfo && base)
+                    {
+                        base.className = properties.showCopyrightInfo.value ? "bg-base-copyright" : "bg-base";
+                    }
+                }
+            };
         </script>          
     </body>
 </html>

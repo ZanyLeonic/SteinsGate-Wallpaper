@@ -1,0 +1,35 @@
+{
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"enableBGM": {
+				"text": "Play BGM",
+				"type": "bool",
+				"value": true
+			},
+			"showCopyrightInfo":
+			{
+				"text": "Show Copyright info",
+				"type": "bool",
+				"value": true
+			},
+			"BGMVolume":
+			{
+				"text": "BGM Volume",
+				"type": "slider",
+				"max": 100,
+				"min": 0,
+				"value": 100,
+				"editable": true
+			},
+			"enableVideo": {
+				"text": "Play Video",
+				"type": "bool",
+				"value": true
+			}
+		}
+	},
+	"title" : "Steins;Gate Main Menu"
+}
