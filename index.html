@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <title>Steins;Gate</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
-        <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="main.min.js"></script>
     </head>
     <body> 
         <div class="bg-components">
@@ -18,11 +18,11 @@
                 <img class="bg-comp06" src="img/bg_comp06.png" />
             </div>
         </div>
-        <video id="bg-video" class="video" muted loop>
-            <source src="bg.webm" type="video/webm">
+        <video id="bg-video" class="time-machine" muted loop>
+            <source src="media/bg.webm" type="video/webm">
         </video>
         <audio id="bg-audio" hidden loop>
-            <source src="bg.ogg" type="audio/ogg">
+            <source src="media/bg.ogg" type="audio/ogg">
         </audio>
         
         <script type="text/javascript">
@@ -35,48 +35,6 @@
 
             var bgcomp = [bgcomp02, bgcomp03, bgcomp04];
             var lastElement = null;
-            
-            var wallpaperProperties = null;
-
-            function setNewTiming(element, time)
-            {
-                element.style.setProperty("--" + element.className + "-timing", time + "s");
-            }
-
-            function changeAnimationTime(element)
-            {
-                var randomTiming = getRandomFloat(0.0001, 0.05);
-                setNewTiming(element, randomTiming);
-            }
-
-            function randomVisibility()
-            {
-                if (lastElement != null)
-                {
-                    lastElement.style.display = "";
-                }
-                
-                var randElement = bgcomp[getRandomInt(0, bgcomp.length)];
-
-                randElement.style.display = "none";
-                lastElement = randElement;
-            }
-
-            function comp06Anim()
-            {
-                switch (getRandomInt(0,3))
-                {
-                    case 0:
-                        bgcomp06.style.clipPath = "polygon(0 0, 10.5% 0, 10.5% 100%, 0 100%)";
-                        break;
-                    case 1:
-                        bgcomp06.style.clipPath = "polygon(0 0, 13% 0, 13% 100%, 0 100%)";
-                        break;
-                    case 2:
-                        bgcomp06.style.clipPath = "";
-                        break;
-                }
-            }
 
             setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp01);
             setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp02);
@@ -84,8 +42,8 @@
             setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp04);
             setInterval(changeAnimationTime, getRandomInt(1000, 2500), bgcomp05);
 
-            setInterval(randomVisibility, 2500);
-            setInterval(comp06Anim, 1000);
+            setInterval(randomVisibility, 2000);
+            setInterval(comp06Anim, 1500);
 
             (function() {
                 /**
@@ -110,66 +68,6 @@
                     audio.play();
                 });
             })();
-
-            window.wallpaperPropertyListener = {
-                applyUserProperties: function(properties) {
-                    /**
-                    * Video element
-                    * @type {HTMLElement}
-                    */
-                    var video = document.getElementById("bg-video");
-                    if (properties.enableVideo && video)
-                    {
-                        if(properties.enableVideo.value == true)
-                        {
-                            video.play();
-                        }
-                        else
-                        {
-                            video.pause();
-                        }
-                    }
-
-                    /**
-                    * Audio element
-                    * @type {HTMLElement}
-                    */
-                    var audio = document.getElementById("bg-audio");
-                    if (properties.enableBGM && audio)
-                    {
-                        if(properties.enableBGM.value == true)
-                        {
-                            audio.play();
-                        }
-                        else
-                        {
-                            audio.pause();
-                        }
-                    }
-
-                    if (properties.BGMVolume && audio)
-                    {
-                        if (properties.BGMVolume.value != "")
-                        {
-                            if (properties.BGMVolume.value == 0)
-                            {
-                                audio.volume = properties.BGMVolume.value = 0;
-                            }
-                            else
-                            {
-                                audio.volume = properties.BGMVolume.value / 100;
-                            }
-                        }
-                    }
-
-                    var base = document.getElementById("bg-base");
-
-                    if (properties.showCopyrightInfo && base)
-                    {
-                        base.className = properties.showCopyrightInfo.value ? "bg-base-copyright" : "bg-base";
-                    }
-                }
-            };
         </script>          
     </body>
 </html>
